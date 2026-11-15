@@ -6,6 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --win --dir",
+    "dist": "electron-builder --win nsis",
     "pack": "electron-packager . 'PB Mobile Windows' --platform=win32 --arch=x64 --out=dist"
   },
   "author": "Nova",
@@ -14,5 +15,36 @@
     "electron": "^28.0.0",
     "electron-builder": "^24.9.0",
     "electron-packager": "^17.1.2"
+  },
+  "build": {
+    "appId": "com.allogic.pbmobile.windows",
+    "productName": "PB Mobile Windows",
+    "files": [
+      "main.js",
+      "preload.js",
+      "game.html",
+      "jogo.html",
+      "game.patched.js",
+      "bundle.patched.js",
+      "logic.js",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }
