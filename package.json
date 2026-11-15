@@ -1,0 +1,18 @@
+{
+  "name": "pb-mobile-windows",
+  "version": "3.3.0",
+  "description": "Piercing Blow Mobile Patched - Windows Desktop Version",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --dir",
+    "pack": "electron-packager . 'PB Mobile Windows' --platform=win32 --arch=x64 --out=dist"
+  },
+  "author": "Nova",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.0",
+    "electron-packager": "^17.1.2"
+  }
+}
