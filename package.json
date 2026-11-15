@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build": "electron-builder --win --dir",
-    "dist": "electron-builder --win nsis",
+    "dist": "electron-builder --win nsis --publish=never",
     "pack": "electron-packager . 'PB Mobile Windows' --platform=win32 --arch=x64 --out=dist"
   },
   "author": "Nova",
