@@ -1,36 +1,34 @@
-# Piercing Blow Mobile - Patched (Windows Edition)
+# Piercing Blow Mobile - Windows Desktop Client
 
-Versi Windows Desktop dari **PB Mobile Patched** (*Pbmobile_3.3_Android_patched.apk*), lengkap dengan seluruh fitur, fungsi, dan asset modifikasi tanpa ada yang dikurang-kurangi!
+Shell Electron sederhana yang membuka **situs resmi** Piercing Blow Mobile
+(`https://pbmobile.ch/jogo`) di jendela desktop sendiri, lengkap dengan
+shortcut di Start Menu / Desktop lewat installer `.exe`.
 
-## Fitur & Kelengkapan:
-1. **Full Asset Parity**: Menggunakan aset game asli dan script yang sudah di-patch (`game.html`, `jogo.html`, `bundle.patched.js`, `game.patched.js`, `logic.js`).
-2. **JavaScript Bridge Emulation**: Menyediakan objek `window.PBAndroid` (`poll()`, `getHwid()`) agar script modifikasi berjalan persis seperti di aplikasi Android.
-3. **Vibration / Feedback**: Mendukung getaran perangkat melalui API gamepad rumble jika kontroller terhubung, atau fallback mulus.
-4. **Desktop UI Optimization**: Dijalankan menggunakan Electron framework dengan jendela ukuran 1024x768 (atau resizable), pencahayaan & WebGL hardware accelerated.
+Aplikasi ini **tidak membawa file game, aset, atau script modifikasi apa
+pun** — semua asset dan logic game dimuat langsung dari server resmi saat
+aplikasi dijalankan, sama seperti membuka game itu di browser. Karena itu
+dibutuhkan koneksi internet untuk bermain, dan game akan selalu berjalan
+versi terbaru dari server resmi.
 
----
-
-## Cara Menjalankan di PC Windows:
+## Cara Menjalankan di PC Windows (dari source):
 
 ### Prasyarat:
-Pastikan PC Windows Anda sudah menginstal **Node.js** (versi 16 atau yang lebih baru). Anda dapat mengunduhnya dari [nodejs.org](https://nodejs.org/).
+Pastikan PC Windows Anda sudah menginstal **Node.js** (versi 16 atau yang lebih baru), dari [nodejs.org](https://nodejs.org/).
 
-### Langkah Instalasi & Menjalankan:
-1. Ekstrak atau salin folder `windows_version` ke PC Windows Anda.
+### Langkah:
+1. Ekstrak folder ini ke PC Windows Anda.
 2. Buka **Command Prompt (CMD)** atau **PowerShell** di dalam folder tersebut.
-3. Install dependencies (Electron & builder):
+3. Install dependencies:
    ```bash
    npm install
    ```
-4. Jalankan aplikasi game:
+4. Jalankan aplikasi:
    ```bash
    npm start
    ```
 
-### Cara Membuat File `.exe` Standalone (Portable / Installer):
-Jika Anda ingin membuat file `.exe` mandiri yang bisa dijalankan di komputer Windows manapun tanpa perlu install Node.js:
-- Untuk membuat folder aplikasi ter-pack:
-  ```bash
-  npm run build
-  ```
-- Atau gunakan `electron-packager` / `electron-builder` untuk menghasilkan installer / file `.exe`.
+### Membuat installer `.exe`:
+```bash
+npm run dist
+```
+Hasilnya ada di folder `dist/`, berupa installer NSIS (`PB Mobile Windows Setup x.x.x.exe`).

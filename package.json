@@ -1,7 +1,7 @@
 {
   "name": "pb-mobile-windows",
-  "version": "3.3.0",
-  "description": "Piercing Blow Mobile Patched - Windows Desktop Version",
+  "version": "1.0.0",
+  "description": "Piercing Blow Mobile - Windows Desktop Client (official web client)",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -21,12 +21,6 @@
     "productName": "PB Mobile Windows",
     "files": [
       "main.js",
-      "preload.js",
-      "game.html",
-      "jogo.html",
-      "game.patched.js",
-      "bundle.patched.js",
-      "logic.js",
       "package.json"
     ],
     "directories": {

@@ -1,32 +1,43 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, Menu } = require('electron');
+
+const GAME_URL = 'https://pbmobile.ch/jogo';
 
 let mainWindow;
-let currentPollValue = 0;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    width: 1280,
+    height: 800,
     useContentSize: true,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: false,
       contextIsolation: true,
-      webSecurity: false
+      sandbox: true
     },
     autoHideMenuBar: true,
     backgroundColor: '#000000',
     title: 'Piercing Blow Mobile - Windows Edition'
   });
 
-  mainWindow.loadFile('game.html');
-}
+  Menu.setApplicationMenu(null);
+  mainWindow.loadURL(GAME_URL);
 
-ipcMain.on('get-poll-value', (event) => {
-  event.returnValue = currentPollValue;
-  currentPollValue = 0;
-});
+  // Keep external/off-site links from hijacking the game window.
+  mainWindow.webContents.setWindowOpenHandler(({ url }) => {
+    if (url.startsWith('https://pbmobile.ch/')) {
+      return { action: 'allow' };
+    }
+    require('electron').shell.openExternal(url);
+    return { action: 'deny' };
+  });
+
+  mainWindow.webContents.on('will-navigate', (event, url) => {
+    if (!url.startsWith('https://pbmobile.ch/')) {
+      event.preventDefault();
+      require('electron').shell.openExternal(url);
+    }
+  });
+}
 
 app.whenReady().then(() => {
   createWindow();
