@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 
-const GAME_URL = 'https://pbmobile.app/jogo';
+const GAME_URL = 'https://pbmobile.app/';
 
 let mainWindow;
 
