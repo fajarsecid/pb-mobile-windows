@@ -1,7 +1,7 @@
 # Piercing Blow Mobile - Windows Desktop Client
 
 Shell Electron sederhana yang membuka **situs resmi** Piercing Blow Mobile
-(`https://pbmobile.ch/jogo`) di jendela desktop sendiri, lengkap dengan
+(`https://pbmobile.app/jogo`) di jendela desktop sendiri, lengkap dengan
 shortcut di Start Menu / Desktop lewat installer `.exe`.
 
 Aplikasi ini **tidak membawa file game, aset, atau script modifikasi apa

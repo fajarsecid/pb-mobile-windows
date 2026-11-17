@@ -1,6 +1,6 @@
 const { app, BrowserWindow, Menu } = require('electron');
 
-const GAME_URL = 'https://pbmobile.ch/jogo';
+const GAME_URL = 'https://pbmobile.app/jogo';
 
 let mainWindow;
 
@@ -24,7 +24,7 @@ function createWindow() {
 
   // Keep external/off-site links from hijacking the game window.
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-    if (url.startsWith('https://pbmobile.ch/')) {
+    if (url.startsWith('https://pbmobile.app/')) {
       return { action: 'allow' };
     }
     require('electron').shell.openExternal(url);
@@ -32,7 +32,7 @@ function createWindow() {
   });
 
   mainWindow.webContents.on('will-navigate', (event, url) => {
-    if (!url.startsWith('https://pbmobile.ch/')) {
+    if (!url.startsWith('https://pbmobile.app/')) {
       event.preventDefault();
       require('electron').shell.openExternal(url);
     }
